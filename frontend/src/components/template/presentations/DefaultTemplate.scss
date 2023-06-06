@@ -11,3 +11,10 @@
     flex-wrap: nowrap;
     overflow-y: scroll;
 }
+.hammer {
+    color: #c4c4c4;
+    transition: color 0.3s;
+}
+.hammer:hover {
+    color: #000000;
+}

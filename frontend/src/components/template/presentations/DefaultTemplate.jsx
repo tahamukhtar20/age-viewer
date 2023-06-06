@@ -20,9 +20,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { Row, Button } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faHammer } from '@fortawesome/free-solid-svg-icons';
 import EditorContainer from '../../contents/containers/Editor';
 import Sidebar from '../../sidebar/containers/Sidebar';
 import Contents from '../../contents/containers/Contents';
@@ -94,7 +94,7 @@ const DefaultTemplate = ({
 
   return (
     <div className="default-template">
-      { isOpen && <Modal /> }
+      {isOpen && <Modal />}
       <input
         type="radio"
         className="theme-switch"
@@ -112,22 +112,23 @@ const DefaultTemplate = ({
         readOnly
       />
       <Row className="content-row">
-        <div>
-          <Button onClick={() => setOpen(true)}>
-            <FontAwesomeIcon icon={faBars} />
-          </Button>
-          <BuilderContainer open={open} setOpen={setOpen} finder={finder} />
-        </div>
         <div className="editor-division wrapper-extension-padding">
-
-          <EditorContainer />
+          <div className="w-100 h-100">
+            <BuilderContainer open={open} setOpen={setOpen} finder={finder} />
+            <EditorContainer>
+              <button className="frame-head-button btn btn-link" type="button" onClick={() => setOpen(true)}>
+                <FontAwesomeIcon
+                  icon={faHammer}
+                  size="2x"
+                  className="hammer"
+                />
+              </button>
+            </EditorContainer>
+          </div>
           <Sidebar />
           <Contents />
-
         </div>
-
       </Row>
-
     </div>
   );
 };

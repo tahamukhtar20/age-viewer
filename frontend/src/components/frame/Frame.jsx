@@ -54,21 +54,6 @@ const Frame = ({
   const dispatch = useDispatch();
   const [isFullScreen, setFullScreen] = useState(false);
   const [isExpand, setExpand] = useState(true);
-
-  // const downloadMenu = () => (
-  //   <Menu onClick={(e) => onDownload(e)}>
-  //     <Menu.Item key="png">
-  //       Save as PNG
-  //     </Menu.Item>
-  //     <Menu.Item key="json">
-  //       Save as JSON
-  //     </Menu.Item>
-  //     <Menu.Item key="csv">
-  //       Save as CSV
-  //     </Menu.Item>
-  //   </Menu>
-  // );
-
   return (
     <div className={`${styles.Frame} ${isFullScreen ? styles.FullScreen : ''}`}>
       <div className={styles.FrameHeader}>
@@ -79,6 +64,7 @@ const Frame = ({
           </strong>
           <FontAwesomeIcon
             id={styles.toEditor}
+            className="ml-2"
             title="copy to editor"
             icon={faClone}
             size="s"

@@ -383,8 +383,8 @@ const SidebarHome = ({
   };
 
   return (
-    <div className="sidebar-home">
-      <div className="sidebar sidebar-body">
+    <div className="container-fluid">
+      <div className="card grid">
         <div className="form-group sidebar-item">
           <b>Node Label</b>
           <br />
@@ -422,63 +422,63 @@ const SidebarHome = ({
             </div>
           </>
         ) }
-      </div>
-      <div className="sidebar-item-disconnect-outer">
-        <div className="form-group sidebar-item-disconnect">
-          <div className="sidebar-item-disconnect-buttons">
-            <button
-              className="frame-head-button refresh_button btn btn-link"
-              type="button"
-              onClick={() => refreshSidebarHome()}
-            >
-              <FontAwesomeIcon
-                icon={faRedo}
-                size="1x"
-                color="white"
-                flip="horizontal"
-              />
-            </button>
-            <br />
-            <b>Refresh</b>
-          </div>
-          <HorizontalLine />
-          <div className="sidebar-item-disconnect-buttons">
-            <button
-              className="frame-head-button close_session btn btn-link"
-              type="button"
-              color="#142B80"
-              onClick={() => confirm({
-                title: 'Are you sure you want to close this window?',
-                onOk() {
-                  requestDisconnect();
-                },
-                onCancel() {
-                  return false;
-                },
-              })}
-            >
-              <FontAwesomeIcon
-                icon={faTimes}
-                size="1x"
-                color="white"
-              />
-            </button>
-            <br />
-            <b>Close Session</b>
-          </div>
-          { !isLabel && (
-            <>
-              <HorizontalLine />
-              <div className="sidebar-item-disconnect-buttons">
-                <GraphSelectDropdown
-                  currentGraph={currentGraph}
-                  graphs={graphs}
-                  changeCurrentGraph={changeCurrentGraph}
-                  changeGraphDB={changeGraph}
+        <div className="sidebar-item-disconnect-outer">
+          <div className="form-group sidebar-item-disconnect d-flex flex-column">
+            <div className="sidebar-item-disconnect-buttons">
+              <button
+                className="frame-head-button refresh_button btn btn-link"
+                type="button"
+                onClick={() => refreshSidebarHome()}
+              >
+                <FontAwesomeIcon
+                  icon={faRedo}
+                  size="1x"
+                  color="white"
+                  flip="horizontal"
                 />
-              </div>
-            </>
-          ) }
+              </button>
+              <br />
+              <b>Refresh</b>
+            </div>
+            <HorizontalLine />
+            <div className="sidebar-item-disconnect-buttons">
+              <button
+                className="frame-head-button close_session btn btn-link"
+                type="button"
+                color="#142B80"
+                onClick={() => confirm({
+                  title: 'Are you sure you want to close this window?',
+                  onOk() {
+                    requestDisconnect();
+                  },
+                  onCancel() {
+                    return false;
+                  },
+                })}
+              >
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  size="1x"
+                  color="white"
+                />
+              </button>
+              <br />
+              <b>Close Session</b>
+            </div>
+            { !isLabel && (
+              <>
+                <HorizontalLine />
+                <div className="sidebar-item-disconnect-buttons">
+                  <GraphSelectDropdown
+                    currentGraph={currentGraph}
+                    graphs={graphs}
+                    changeCurrentGraph={changeCurrentGraph}
+                    changeGraphDB={changeGraph}
+                  />
+                </div>
+              </>
+            ) }
+          </div>
         </div>
       </div>
     </div>

@@ -95,7 +95,6 @@ const GraphSelectDropdown = ({
   currentGraph, graphs, changeCurrentGraph, changeGraphDB,
 }) => {
   const selectStyle = {
-    marginTop: '1rem',
     display: 'block',
   };
   const handleGraphClick = (_, e) => {
@@ -109,14 +108,10 @@ const GraphSelectDropdown = ({
     ))
   );
   return (
-    <Col id="graphSelectionContainer">
-      <Select onChange={handleGraphClick} placeholder="Select Graph" style={selectStyle} value={currentGraph}>
+    <Col id="graphSelectionContainer" className="d-flex align-items-center">
+      <Select onChange={handleGraphClick} placeholder="Select Graph" className="w-100" style={selectStyle} value={currentGraph}>
         {options}
       </Select>
-      <br />
-      <b>
-        Current Graph
-      </b>
     </Col>
   );
 };

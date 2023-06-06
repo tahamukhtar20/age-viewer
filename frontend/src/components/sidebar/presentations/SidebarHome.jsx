@@ -26,7 +26,7 @@ import { connect, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 import {
-  VerticalLine, HorizontalLine, SubLabelLeft, SubLabelRight, GraphSelectDropdown,
+  SubLabelLeft, SubLabelRight, GraphSelectDropdown,
 } from './SidebarComponents';
 
 const genLabelQuery = (eleType, labelName, database) => {
@@ -383,33 +383,75 @@ const SidebarHome = ({
   };
 
   return (
-    <div className="container-fluid">
-      <div className="card grid">
-        <div className="form-group sidebar-item">
+    <div className="">
+      <div className="form-group d-flex w-100 h-100 flex-row justify-content-end">
+        <div className="">
+          <button
+            className="btn-success btn btn-link"
+            type="button"
+            onClick={() => refreshSidebarHome()}
+          >
+            <FontAwesomeIcon
+              icon={faRedo}
+              size="1x"
+              color="white"
+              flip="horizontal"
+            />
+          </button>
+        </div>
+        <div className="mx-2 d-flex justify-content-center align-items-center">
+          <button
+            className=" btn btn-danger btn-link"
+            type="button"
+            color="#142B80"
+            onClick={() => confirm({
+              title: 'Are you sure you want to close this window?',
+              onOk() {
+                requestDisconnect();
+              },
+              onCancel() {
+                return false;
+              },
+            })}
+          >
+            <FontAwesomeIcon
+              icon={faTimes}
+              size="1x"
+              color="white"
+            />
+          </button>
+        </div>
+        { !isLabel && (
+        <>
+          <div className="">
+            <GraphSelectDropdown
+              currentGraph={currentGraph}
+              graphs={graphs}
+              changeCurrentGraph={changeCurrentGraph}
+              changeGraphDB={changeGraph}
+            />
+          </div>
+        </>
+        ) }
+      </div>
+      <div className="w-100 row mx-2">
+        <div className="form-group col ">
           <b>Node Label</b>
-          <br />
           <NodeList nodes={nodes} setCommand={setCommand} />
         </div>
-        <VerticalLine />
-        <div className="form-group sidebar-item">
+        <div className="form-group col">
           <b>Edge Label</b>
-          <br />
           <EdgeList edges={edges} setCommand={setCommand} />
         </div>
-        <VerticalLine />
-        <div className="form-group sidebar-item">
+        <div className="form-group col">
           <b>Properties</b>
-          <br />
           <PropertyList propertyKeys={propertyKeys} setCommand={setCommand} />
         </div>
-        <div id="lastHorizontalLine">
-          <VerticalLine />
-        </div>
+        <div id="lastHorizontalLine" />
         { isLabel && (
           <>
-            <div className="form-group sidebar-item">
+            <div className="form-group col">
               <b>Graphs</b>
-              <br />
               <GraphList
                 graphs={graphs}
                 currentGraph={currentGraph}
@@ -417,69 +459,9 @@ const SidebarHome = ({
                 changeGraph={changeGraph}
               />
             </div>
-            <div id="lastHorizontalLine">
-              <VerticalLine />
-            </div>
+            <div id="lastHorizontalLine" />
           </>
         ) }
-        <div className="sidebar-item-disconnect-outer">
-          <div className="form-group sidebar-item-disconnect d-flex flex-column">
-            <div className="sidebar-item-disconnect-buttons">
-              <button
-                className="frame-head-button refresh_button btn btn-link"
-                type="button"
-                onClick={() => refreshSidebarHome()}
-              >
-                <FontAwesomeIcon
-                  icon={faRedo}
-                  size="1x"
-                  color="white"
-                  flip="horizontal"
-                />
-              </button>
-              <br />
-              <b>Refresh</b>
-            </div>
-            <HorizontalLine />
-            <div className="sidebar-item-disconnect-buttons">
-              <button
-                className="frame-head-button close_session btn btn-link"
-                type="button"
-                color="#142B80"
-                onClick={() => confirm({
-                  title: 'Are you sure you want to close this window?',
-                  onOk() {
-                    requestDisconnect();
-                  },
-                  onCancel() {
-                    return false;
-                  },
-                })}
-              >
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  size="1x"
-                  color="white"
-                />
-              </button>
-              <br />
-              <b>Close Session</b>
-            </div>
-            { !isLabel && (
-              <>
-                <HorizontalLine />
-                <div className="sidebar-item-disconnect-buttons">
-                  <GraphSelectDropdown
-                    currentGraph={currentGraph}
-                    graphs={graphs}
-                    changeCurrentGraph={changeCurrentGraph}
-                    changeGraphDB={changeGraph}
-                  />
-                </div>
-              </>
-            ) }
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Col, Form, Input, InputNumber, Row,
+  Button, Form, Input, InputNumber,
 } from 'antd';
 import { useDispatch } from 'react-redux';
 import Frame from '../Frame';
@@ -75,40 +75,36 @@ const ServerConnectFrame = ({
       isPinned={isPinned}
       refKey={refKey}
     >
-      <Row>
-        <Col span={6}>
-          <h3>Connect to Database</h3>
-          <p>Database access might require an authenticated connection.</p>
-        </Col>
-        <Col span={18}>
-          <div className={styles.FrameWrapper}>
-            <Form
-              initialValues={FormInitialValue}
-              layout="vertical"
-              onFinish={connectToDatabase}
-            >
-              <Form.Item name="host" label="Connect URL" rules={[{ required: true }]}>
-                <Input placeholder="192.168.0.1" />
-              </Form.Item>
-              <Form.Item name="port" label="Connect Port" rules={[{ required: true }]}>
-                <InputNumber placeholder="5432" className={styles.FullWidth} />
-              </Form.Item>
-              <Form.Item name="database" label="Database Name" rules={[{ required: true }]}>
-                <Input placeholder="postgres" />
-              </Form.Item>
-              <Form.Item name="user" label="User Name" rules={[{ required: true }]}>
-                <Input placeholder="postgres" />
-              </Form.Item>
-              <Form.Item name="password" label="Password" rules={[{ required: true }]}>
-                <Input.Password placeholder="postgres" />
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" htmlType="submit">Connect</Button>
-              </Form.Item>
-            </Form>
-          </div>
-        </Col>
-      </Row>
+      <h3>Connect to Database</h3>
+      <p>Database access might require an authenticated connection.</p>
+      <div className={`${styles.FrameWrapper}w-100`}>
+        <Form
+          className="w-100"
+          initialValues={FormInitialValue}
+          layout="vertical"
+          onFinish={connectToDatabase}
+        >
+          <Form.Item name="host" label="Connect URL" rules={[{ required: true }]}>
+            <Input placeholder="192.168.0.1" className="w-100" />
+          </Form.Item>
+          <Form.Item name="port" label="Connect Port" rules={[{ required: true }]}>
+            {/* eslint-disable-next-line react/jsx-no-duplicate-props */}
+            <InputNumber placeholder="5432" className={styles.FullWidth} className="w-100" />
+          </Form.Item>
+          <Form.Item name="database" label="Database Name" rules={[{ required: true }]}>
+            <Input placeholder="postgres" className="w-100" />
+          </Form.Item>
+          <Form.Item name="user" label="User Name" rules={[{ required: true }]}>
+            <Input placeholder="postgres" className="w-100" />
+          </Form.Item>
+          <Form.Item name="password" label="Password" rules={[{ required: true }]}>
+            <Input.Password placeholder="postgres" className="w-100" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">Connect</Button>
+          </Form.Item>
+        </Form>
+      </div>
     </Frame>
   );
 };

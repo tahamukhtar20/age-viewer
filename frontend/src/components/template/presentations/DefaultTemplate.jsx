@@ -116,7 +116,12 @@ const DefaultTemplate = ({
           <div className="w-100 h-100">
             <BuilderContainer open={open} setOpen={setOpen} finder={finder} />
             <EditorContainer>
-              <button className="frame-head-button btn btn-link" type="button" onClick={() => setOpen(true)}>
+              <button
+                className="frame-head-button btn btn-link"
+                type="button"
+                title="Query Builder"
+                onClick={() => setOpen(true)}
+              >
                 <FontAwesomeIcon
                   icon={faHammer}
                   size="2x"

@@ -26,7 +26,7 @@ import { connect, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 import {
-  SubLabelLeft, SubLabelRight, GraphSelectDropdown,
+  SubLabelLeft, SubLabelRight, GraphSelectDropdown, VerticalLine,
 } from './SidebarComponents';
 
 const genLabelQuery = (eleType, labelName, database) => {
@@ -83,6 +83,7 @@ const NodeList = ({ nodes, setCommand }) => {
       <div style={{
         display: 'flex',
         flexWrap: 'wrap',
+        minWidth: '240px',
         height: '80px',
         overflowY: 'auto',
         marginTop: '12px',
@@ -146,6 +147,7 @@ const EdgeList = ({ edges, setCommand }) => {
         display: 'flex',
         flexWrap: 'wrap',
         height: '80px',
+        minWidth: '240px',
         overflowY: 'auto',
         marginTop: '12px',
       }}
@@ -206,6 +208,7 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
         display: 'flex',
         flexWrap: 'wrap',
         height: '80px',
+        minWidth: '240px',
         overflowY: 'auto',
         marginTop: '12px',
       }}
@@ -263,6 +266,7 @@ const GraphList = ({
         display: 'flex',
         flexWrap: 'wrap',
         height: '80px',
+        minWidth: '240px',
         overflowY: 'auto',
         marginTop: '12px',
       }}
@@ -383,12 +387,13 @@ const SidebarHome = ({
   };
 
   return (
-    <div className="">
-      <div className="form-group d-flex w-100 h-100 flex-row justify-content-end">
+    <div className="d-flex flex-column justify-content-center align-items-center">
+      <div className="form-group d-flex w-100 h-100 flex-row justify-content-sm-end justify-content-center mt-2">
         <div className="">
           <button
             className="btn-success btn btn-link"
             type="button"
+            title="Refresh"
             onClick={() => refreshSidebarHome()}
           >
             <FontAwesomeIcon
@@ -404,6 +409,7 @@ const SidebarHome = ({
             className=" btn btn-danger btn-link"
             type="button"
             color="#142B80"
+            title="Disconnect"
             onClick={() => confirm({
               title: 'Are you sure you want to close this window?',
               onOk() {
@@ -423,7 +429,7 @@ const SidebarHome = ({
         </div>
         { !isLabel && (
         <>
-          <div className="">
+          <div className="w-25 mt-1">
             <GraphSelectDropdown
               currentGraph={currentGraph}
               graphs={graphs}
@@ -434,22 +440,24 @@ const SidebarHome = ({
         </>
         ) }
       </div>
-      <div className="w-100 row mx-2">
+      <div className="w-100 row overflow-auto">
         <div className="form-group col ">
           <b>Node Label</b>
           <NodeList nodes={nodes} setCommand={setCommand} />
         </div>
+        <VerticalLine />
         <div className="form-group col">
           <b>Edge Label</b>
           <EdgeList edges={edges} setCommand={setCommand} />
         </div>
+        <VerticalLine />
         <div className="form-group col">
           <b>Properties</b>
           <PropertyList propertyKeys={propertyKeys} setCommand={setCommand} />
         </div>
-        <div id="lastHorizontalLine" />
         { isLabel && (
           <>
+            <VerticalLine />
             <div className="form-group col">
               <b>Graphs</b>
               <GraphList
@@ -459,7 +467,6 @@ const SidebarHome = ({
                 changeGraph={changeGraph}
               />
             </div>
-            <div id="lastHorizontalLine" />
           </>
         ) }
       </div>

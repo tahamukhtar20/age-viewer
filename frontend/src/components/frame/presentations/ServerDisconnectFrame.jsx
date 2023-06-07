@@ -22,7 +22,6 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
-import { Col, Row } from 'antd';
 import Frame from '../Frame';
 
 const ServerDisconnectFrame = ({
@@ -53,26 +52,21 @@ const ServerDisconnectFrame = ({
       isPinned={isPinned}
       refKey={refKey}
     >
-      <Row>
-        <Col span={6}>
-          <h3>Disconnected Succesfully</h3>
-          <p>You are successfully disconnected from Database.</p>
-        </Col>
-        <Col span={18}>
-          <p>
-            You may run
-            <a href="/#" className="badge badge-light" onClick={() => { setCommand(':server connect'); }}>
-              <FontAwesomeIcon
-                icon={faPlayCircle}
-                size="lg"
-              />
-              :server connection
-            </a>
-            {' '}
-            to establish new connection
-          </p>
-        </Col>
-      </Row>
+      <h3>Disconnected Succesfully</h3>
+      <p>You are successfully disconnected from Database.</p>
+      <p>
+        You may run&nbsp;
+        <a href="/#" className="badge badge-light" onClick={() => { setCommand(':server connect'); }}>
+          <FontAwesomeIcon
+            icon={faPlayCircle}
+            size="lg"
+          />
+          :server connection
+        </a>
+        {' '}
+        to establish new connection
+      </p>
+
     </Frame>
   );
 };

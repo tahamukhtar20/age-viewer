@@ -16,11 +16,13 @@ const BuilderSelection = ({ finder, setQuery, currentWord }) => {
       (element) => (
         <ListGroup.Item key={uuid()}>
           <Button
-            size="small"
+            className="btn-block my-2 p-3"
+            type="button"
+            variant="outline-primary"
             onClick={handleClick}
             data-val={element}
           >
-            {element}
+            <b>{element}</b>
           </Button>
         </ListGroup.Item>
       ),

@@ -109,6 +109,9 @@ const GraphSelectDropdown = ({
   );
   return (
     <Col id="graphSelectionContainer" className="d-flex align-items-center">
+      <div className="bg-dark border border-dark rounded-left">
+        <p className="text-white my-auto text-center p-1">Graph&nbsp;</p>
+      </div>
       <Select onChange={handleGraphClick} placeholder="Select Graph" className="w-100" style={selectStyle} value={currentGraph}>
         {options}
       </Select>

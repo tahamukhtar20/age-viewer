@@ -28,7 +28,7 @@ import {
   faTimes,
   faClone,
 } from '@fortawesome/free-solid-svg-icons';
-import { Button, Popover } from 'antd';
+import { Button, Popover, Modal } from 'antd';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import styles from './Frame.module.scss';
@@ -52,6 +52,7 @@ const Frame = ({
   isTable,
 }) => {
   const dispatch = useDispatch();
+  const { confirm } = Modal;
   const [isFullScreen, setFullScreen] = useState(false);
   const [isExpand, setExpand] = useState(true);
   return (
@@ -110,26 +111,6 @@ const Frame = ({
               <IconFilter />
             </Button>
           ) : null}
-          {/* {false ? ( // en:Functionality is hidden due to */}
-          {/* functional problems // ko:기능이 동작하지 않아 감춤 */}
-          {/*  <Dropdown */}
-          {/*    trigger={['click']} */}
-          {/*    overlay={downloadMenu} */}
-          {/*  > */}
-          {/*    <Button */}
-          {/*      size="large" */}
-          {/*      type="link" */}
-          {/*      className={styles.FrameButton} */}
-          {/*    > */}
-          {/*      <FontAwesomeIcon */}
-          {/*        icon={faDownload} */}
-          {/*        size="lg" */}
-          {/*      /> */}
-          {/*      <FontAwesomeIcon icon={faAngleDown} /> */}
-          {/*    </Button> */}
-          {/*  </Dropdown> */}
-          {/* ) */}
-          {/*  : null} */}
           <Button
             size="large"
             type="link"
@@ -160,16 +141,6 @@ const Frame = ({
               </Button>
             ) : null
           }
-          {/* <Button
-            size="large"
-            type="link"
-            className={`${styles.FrameButton} ${isPinned ? styles.activate : ''}`}
-            onClick={() => pinFrame(refKey)}
-          >
-          <FontAwesomeIcon icon={faPaperclip}
-              size="lg"
-            />
-          </Button> */}
           <Button
             size="large"
             type="link"
@@ -187,14 +158,17 @@ const Frame = ({
             type="link"
             className={`${styles.FrameButton}`}
             onClick={() => {
-              if (window.confirm('Are you sure you want to close this window?')) {
-                dispatch(removeFrame(refKey));
-                dispatch(removeActiveRequests(refKey));
-              } else {
-                // Do nothing!
-              }
+              (confirm({
+                title: 'Are you sure you want to close this window?',
+                onOk() {
+                  dispatch(removeFrame(refKey));
+                  dispatch(removeActiveRequests(refKey));
+                },
+                onCancel() {
+                  return false;
+                },
+              }));
             }}
-            title="Close Window"
           >
             <FontAwesomeIcon icon={faTimes} size="lg" />
           </Button>

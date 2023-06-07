@@ -144,17 +144,16 @@ const Editor = ({
   return (
     <div className="container-fluid">
       <div className="editor">
-        <div className="container-fluid editor-area card-header">
+        <div className="container-fluid editor-area card-header d-flex w-100 h-100 justify-content-center align-items-center">
           <div className="input-group input-style">
-
-            <div id="codeMirrorEditor" className="form-control col-11 editor-code-wrapper">
+            <div id="codeMirrorEditor" className="form-control w-100 editor-code-wrapper">
               <CodeMirror
                 onClick={onClick}
                 value={command}
                 onChange={setCommand}
               />
             </div>
-            <div className="input-group-append ml-auto editor-button-wrapper" id="editor-buttons">
+            <div className="input-group-append ml-auto editor-button-wrapper " id="editor-buttons">
               <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" onDoubleClick={() => clearCommand()}>
                 <FontAwesomeIcon
                   icon={faTimesCircle}
@@ -184,7 +183,7 @@ const Editor = ({
                 className="frame-head-button btn btn-link"
                 type="button"
                 onClick={() => setLabel()}
-                title="Run Query"
+                title="Graph Toggle"
               >
                 <FontAwesomeIcon
                   icon={isLabel ? faToggleOn : faToggleOff}

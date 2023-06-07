@@ -52,7 +52,7 @@ Install latest **pm2** with :
 
 - **Connection Status Button**: The button used in the connection status component has been replaced with the button from the Connect to Database form, sourced from Ant Design (antd) instead of React Bootstrap. This change was made for consistency and to enhance the modal's appearance.
 
-- **Modal Cross Icon**: The cross icon used in modals has been updated to use the Ant Design (antd) confirm modal for consistent styling, matching the sidebarhome component.
+- **Modal Cross Icon**: The cross icon used in modals has been updated to use the Ant Design (antd) confirm modal for consistent styling, Original was the default JS confirm modal, this change was made for matching the sidebarhome component.
 
 - **Tooltips**: Tooltips have been added to the new buttons as an alternative to displaying the associated text, improving user experience.
 

@@ -32,6 +32,35 @@ Install latest **pm2** with :
 
 >This will start the age-viewer on http://localhost:3000 if port 3000 is free.
 
+# Newly made changes in the code
+
+- **Drawer Button Placement**: The drawer button has been moved to a better location for improved usability.
+
+- **Query Builder Icon**: The query builder is now represented by an icon and is placed alongside the other drawer buttons. It has a hover effect to maintain consistency with the other buttons, and its functionality remains the same.
+
+- **Copy Icon Spacing**: The copy icon was adjusted to create better spacing around the associated text.
+
+- **Button Appearance**: The buttons have been redesigned to enhance their visual appeal and ensure a cohesive look.
+
+- **Drawer Button Design**: The drawer buttons have received an improved visual design.
+
+- **Font Change**: The font used in the project has been updated to provide a more distinctive look, deviating from the default Bootstrap font.
+
+- **Responsive Connect to Database Frame**: The Connect to Database frame now adjusts its layout based on different screen sizes to ensure responsiveness.
+
+- **Responsive Connection Status**: The connection status component has been made responsive to adapt to various screen sizes.
+
+- **Connection Status Button**: The button used in the connection status component has been replaced with the button from the Connect to Database form, sourced from Ant Design (antd) instead of React Bootstrap. This change was made for consistency and to enhance the modal's appearance.
+
+- **Modal Cross Icon**: The cross icon used in modals has been updated to use the Ant Design (antd) confirm modal for consistent styling, matching the sidebarhome component.
+
+- **Tooltips**: Tooltips have been added to the new buttons as an alternative to displaying the associated text, improving user experience.
+
+- **Editor Component**: The editor component has been restructured to make it more responsive and suitable for smaller screens.
+
+- **Graph Label with Dropdown**: A new graph label has been introduced, which includes a dropdown menu.
+
+- **Responsive FrameHeaderTitle**: The responsive breakpoint for the FrameHeaderTitle component has been changed to accommodate smaller screen sizes.
 
 # How to build using command
 
